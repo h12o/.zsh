@@ -211,7 +211,7 @@
     do
         [[ -f ${dir}/completion.zsh.inc ]] && . "${dir}/completion.zsh.inc" && break
     done
-    if [[ ${+commands[gcloud]} == 1  ]] ; then
+    if [[ ${+commands[gcloud]} == 1 ]] ; then
         function _cloudsdk_precmd_hook() {
             local command=python
             if [[ ${+commands[pyenv]} == 0 || $(pyenv version-name) == system ]] ; then
