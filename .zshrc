@@ -94,6 +94,13 @@
     [[ ${x[uid]} != 0 && ${x[uid]} == ${x[gid]} && ${x[user]} == ${x[group]} ]] && umask 002 || umask 022
 }
 
+() {
+    :
+    if [[ ${+commands[vi]} == 1 ]] ; then
+        export EDITOR="${${EDITOR}:-vi}"
+    fi
+}
+
 (){
     local dir prefix python
     unset HOMEBREW_SHELLENV_PREFIX
