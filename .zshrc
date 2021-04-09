@@ -73,6 +73,20 @@
 }
 
 () {
+    if [[ -v REMOTE_HOST || -v SSH_CONNECTION ]]; then
+        case "${OSTYPE}" in
+            darwin*) PS1='%n@%m %~ %# ' ;;
+            linux*) PS1='%n@%m:%~%# ' ;;
+        esac
+    else
+        case "${OSTYPE}" in
+            darwin*) PS1='%n@localhost %~ %# ' ;;
+            linux*) PS1='%n@localhost:%~%# ' ;;
+        esac
+    fi
+}
+
+() {
     autoload -Uz promptinit
     if [[ ${+functions[promptinit]} == 1 ]] ; then
         promptinit
