@@ -259,6 +259,9 @@
 
 () {
     function restart() {
+        if [[ ${+commands[make]} == 1 && -f "${ZDOTDIR:-${HOME}}/Makefile" ]] ; then
+            make -C "${ZDOTDIR:-${HOME}}" -s all install
+        fi
         [[ $options[login] == on ]] && exec "${SHELL}" -l || exec "${SHELL}"
     }
 }
